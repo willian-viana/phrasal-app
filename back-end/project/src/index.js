@@ -5,10 +5,10 @@ var $;
 
 new Crawler().configure({depth: 2})
   .crawl("https://www.englishclub.com/ref/Phrasal_Verbs", function onSuccess(page) {
-    // console.log(page.url);
-    $ = cheerio.load(page.content.toString('utf-8'));
-    console.log($('.linklisting h3.linktitle a').text());
-
+      // console.log(page.url);
+      $ = cheerio.load(page.content.toString('utf-8'));
+      console.log($('.linklisting h3.linktitle a').text());
+      console.log($('.linklisting div.linkdescription').text());
   });
 
 // var phrasals = {
