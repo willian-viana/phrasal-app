@@ -4,7 +4,8 @@
   "description": "App to searching phrasal verbs",
   "main": "index.js",
   "dependencies": {
-    "crawler-js": "^2.0.1"
+    "crawler-js": "^2.0.1",
+    "mongojs": "^2.4.0"
   },
   "devDependencies": {
     "grunt": "^1.0.1",
