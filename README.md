@@ -12,7 +12,7 @@ You can also:
   - Save the phrasal verbs
 
 
-PhrasalApp is a couple of verbs who together have the meaning changed.
+Phrasal Verbs is a couple of verbs who together have the meaning changed. e.g.:
 
   - Get up
   - Stand up
