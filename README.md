@@ -43,7 +43,8 @@ Download and extract the [latest pre-built release](https://bitbucket.org/willia
 Install the dependencies and devDependencies and start the server.
 
 ```sh
-$ cd PhrasalVerbs
+$ cd phrasal-verbs
 $ npm install
-$ node app
+$ cd back-end
+$ node index.js
 ```
