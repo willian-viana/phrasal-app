@@ -7,8 +7,9 @@ PhrasalApp is a simple app to look for english sentences.
   - User friendly
 
 You can also:
-  - Help to translate the sentences.
-  - Save the phrasal verbs.
+
+  - Help to translate the sentences
+  - Save the phrasal verbs
 
 
 PhrasalApp is a couple of verbs who together have the meaning changed.
