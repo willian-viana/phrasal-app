@@ -30,6 +30,7 @@ PhrasalApp uses:
 * [Grunt]
 * [CSS3]
 * [jQuery]
+* [Ionic]
 
 
 
