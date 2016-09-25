@@ -38,7 +38,7 @@ PhrasalApp uses:
 
 PhrasalApp requires [Node.js](https://nodejs.org/) v4+ to run.
 
-Download and extract the [latest pre-built release](https://bitbucket.org/willian_batista/phrasal-verbs/).
+Download and extract the [latest pre-built release](https://bitbucket.org/willian_batista/phrasal-verbs/downloads).
 
 Install the dependencies and devDependencies and start the server.
 
