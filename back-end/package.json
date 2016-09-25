@@ -1,17 +1,11 @@
 {
   "name": "PhrasalApp",
   "version": "1.0.0",
-  "description": "App to searching phrasal verbs",
+  "description": "App to look for phrasal verbs",
   "main": "index.js",
   "dependencies": {
     "crawler-js": "^2.0.1",
-    "mongojs": "^2.4.0"
-  },
-  "devDependencies": {
-    "grunt": "^1.0.1",
-    "grunt-contrib-concat": "^1.0.1",
-    "grunt-contrib-cssmin": "^1.0.1",
-    "grunt-contrib-uglify": "^2.0.0",
+    "mongojs": "^2.4.0",
     "js-crawler": "^0.3.11"
   },
   "scripts": {

@@ -1,8 +1,12 @@
 var Crawler = require("js-crawler");
 var cheerio = require('cheerio');
 var mongojs = require('mongojs');
-var db = mongojs('phrasalDB', 'phrasalcollection');
+var db = mongojs('phrasalDB', ['phrasalcollection']);
 
+
+db.on('connect', function() {
+    console.log('database connected');
+});
 
 
 var objectPhrase = {};
@@ -49,10 +53,13 @@ new Crawler().configure({depth: 2})
     });
     
   }, null, function(){
-        // console.log(JSON.stringify(objectPhrase, false, 2));
-
         for(i in objectPhrase){
-          db.phrasalcollection.insert(objectPhrase[i])
+            db.phrasalcollection.find({verb:"'" + i + "'"}, function(err, docs){
+              // if(!docs) db.phrasalcollection.insert(objectPhrase[i]);
+              console.log(docs);
+            });
+            
+           
         }
 
         
