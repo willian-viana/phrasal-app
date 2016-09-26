@@ -5,8 +5,9 @@
   "main": "index.js",
   "dependencies": {
     "crawler-js": "^2.0.1",
-    "mongojs": "^2.4.0",
-    "js-crawler": "^0.3.11"
+    "express": "^4.14.0",
+    "js-crawler": "^0.3.11",
+    "mongojs": "^2.4.0"
   },
   "scripts": {
     "test": "make test"

@@ -53,20 +53,43 @@ new Crawler().configure({depth: 2})
     });
     
   }, null, function(){
-        for(i in objectPhrase){
-            db.phrasalCollection.find({verb:'"' + i + '"'},{verb : 1}, function(err, docs){
-              // if(!docs || docs == undefined || docs == null){
-              //   db.phrasalCollection.insert(objectPhrase[i], function(){
-              //     
-              //   });
-              // }else{
-                console.log(docs[0]);
-              // }
-            db.close();
-            });
-                    
+    
+    var count = 0;
+    for(attr in objectPhrase){
+
+      insertData({
+        data : objectPhrase[attr],
+        attr : attr
+      }, function(){
+        var length = Object.keys(objectPhrase).length;
+        count++;
+        if(count == length){
+          db.close();
         }
-        
+      });
+      
+    }
+       
   });
 
 
+function insertData(options, fn){
+
+  db.phrasalCollection.find({verb:options.attr},{verb : 1}, function(err, docs){
+      console.log(options.attr);
+      if(!docs || docs == undefined || docs == null || docs.length == 0){
+        
+        db.phrasalCollection.insert(options.data, function(err){
+        });
+        
+      }else{
+        console.log(docs);
+      }
+
+      if(typeof fn === "function"){
+        fn();
+      }                        
+  });
+
+
+}
