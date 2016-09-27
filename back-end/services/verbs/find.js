@@ -6,8 +6,9 @@ exports.find = function(options, fn){
         if(err){
             fn(err, 500);
         } else if(!docs){
+            fn(err, 400);
         } else{
-
+            fn(err, docs);
         }
     });
 };

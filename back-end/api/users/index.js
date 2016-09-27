@@ -30,8 +30,6 @@ exports.init = function(app){
                 res.status(200).send(data);
             }
        });
-
-       res.send();
     });
 
 
@@ -45,21 +43,18 @@ exports.init = function(app){
     app.get('/api/v1/users/:id', function(req, res){
        userFindbyId.find(req.param.id);
 
-       res.send();
     });
 
     //Update user document
     app.put('/api/v1/users/:id', function(req, res){
        userFindbyId.find(req.param.id);
 
-       res.send();
     });
 
     //Delete user by ID
     app.delete('/api/v1/users/:id', function(req, res){
        userFindbyId.find(req.param.id);
 
-       res.send();
     });
 
 
