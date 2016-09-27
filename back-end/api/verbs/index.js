@@ -1,11 +1,12 @@
 const express = require('express');
 var app = express();
 
+var FindVerb = require('../../services/verbs/find.js');
 
-app.post('/user/', function(){
+app.post('/verb/', function(){
 
 });
 
-app.get('/user/:id', function(){
+app.get('/verb/:id', function(){
 
 });
