@@ -1,35 +1,26 @@
 
 var userCreate = require('../../services/users/create.js');
-var userFindbyId = require('../../services/users/find.js');
+var userFindAll = require('../../services/users/findAll.js');
+var userFindById = require('../../services/users/findById.js');
+var updateById = require('../../services/users/updateById.js');
+var userdeleteById = require('../../services/users/deleteById.js');
 
-exports.init = function(app){
+exports.init = function(router){
     /*  "/users"
     *    POST: Add a new user
     *    GET: Find all users 
     */
 
     // Add a new user
-    app.post('/api/v1/users/', function(req, res){
+    router.post('/users/', function(req, res){
         userCreate.register({
-            data : {name : req.body.name, email : req.body.name}
-        }, function(err, data){
-            if(err){
-                res.status(data || 500).send(err);
-            }else if(data){
-                res.status(200).send(data);
-            }
-        });
+            data : {name : req.body.name, email : req.body.email}
+        }, callbackRoutes(req, res));
     });
 
     // Find all users
-    app.get('/api/v1/users/', function(req, res){
-       userFindbyId.find(req.param.id, function(err, data){
-           if(err){
-                res.status(data || 500).send(err);
-            }else if(data){
-                res.status(200).send(data);
-            }
-       });
+    router.get('/users/', function(req, res){
+       userFindAll.find(req.param.id, callbackRoutes(req, res));
     });
 
 
@@ -40,22 +31,36 @@ exports.init = function(app){
     */
 
     //Find a single user by ID
-    app.get('/api/v1/users/:id', function(req, res){
-       userFindbyId.find(req.param.id);
+    router.get('/users/:id', function(req, res){
+       userFindById.find(req.params.id, callbackRoutes(req, res));
 
     });
 
     //Update user document
-    app.put('/api/v1/users/:id', function(req, res){
-       userFindbyId.find(req.param.id);
-
+    router.put('/users/:id', function(req, res){
+        updateById.update({
+            data : {name : req.body.name, email : req.body.email}
+        }, callbackRoutes(req, res));
     });
 
     //Delete user by ID
-    app.delete('/api/v1/users/:id', function(req, res){
-       userFindbyId.find(req.param.id);
+    router.delete('/users/:id', function(req, res){
+       userdeleteById.delete(req.params.id, callbackRoutes(req, res));
 
     });
+
+
+    // Callback for routes 
+    function callbackRoutes(req, res){
+        return function(err, data){
+            if(err){
+                res.status(data || 500).send({error : err.message});
+            }else if(data){
+                res.status(200).send(data);
+            }
+        };
+    }
+
 
 
 }

@@ -1,7 +1,7 @@
 const mongojs = require('mongojs'),
 db = mongojs('phrasalDB', ['users']);
 
-exports.find = function(options, fn){
+exports.findAll = function(options, fn){
     db.users.find({}, function(err, docs){
         if(err){
             fn(err, 500);

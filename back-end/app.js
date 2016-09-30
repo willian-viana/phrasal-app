@@ -13,8 +13,8 @@ var router = express.Router();
 
 // REQUIRES APIs
 // ================== //
-require('./api/users/index.js').init(app);
-require('./api/verbs/index.js').init(app);
+require('./api/users/index.js').init(router);
+require('./api/verbs/index.js').init(router);
 
 // TEST
 // ================== //
@@ -25,7 +25,7 @@ app.get('/', function(req,res){
 // REGISTER OUR ROUTES
 // ================== //
 // all of our routes will be prefixed with /api
-app.use('/api', router);
+app.use('/api/v1', router);
 
 
 // START THE SERVER
