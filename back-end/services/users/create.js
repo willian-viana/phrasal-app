@@ -15,7 +15,7 @@ exports.register = function(options, fn){
                 }
             );
         }else{
-            if(typeof fn === "function") fn(new Error("Usuário já existe"), 400);  
+            if(typeof fn === "function") fn(new Error("There is already a user with this mail"), 400);  
         }
     });    
 };

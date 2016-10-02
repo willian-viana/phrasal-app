@@ -9,7 +9,7 @@ exports.delete = function(options, fn){
         if(err){
             if(typeof fn === "function") fn(err, 500);  
         }else{
-            if(typeof fn === "function") fn(err, { msg : "Usuário deletado com sucesso"});
+            if(typeof fn === "function") fn(err, { msg : "User deleted successfully"});
         }
     });
 

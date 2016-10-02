@@ -11,7 +11,7 @@ exports.find = function(options, fn){
         }else if(doc){
             if(typeof fn === "function") fn(err, doc);
         }else{
-            if(typeof fn === "function") fn(new Error("Não há usuário com este ID"), 404);
+            if(typeof fn === "function") fn(new Error("There is no user with this Id"), 404);
         }
     });
 

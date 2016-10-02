@@ -9,7 +9,7 @@ exports.find = function(fn){
         }else if(docs.length){
             if(typeof fn === "function") fn(err, docs);
         }else{
-            if(typeof fn === "function") fn(new Error("Nenhum usuário encontrado"), 400);  
+            if(typeof fn === "function") fn(new Error("No users found"), 400);  
         }
     });
 
