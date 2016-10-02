@@ -46,5 +46,5 @@ Install the dependencies and devDependencies and start the server.
 $ cd phrasal-verbs
 $ npm install
 $ cd back-end
-$ node index.js
+$ node app.js
 ```
