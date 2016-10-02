@@ -67,4 +67,8 @@ $ node app.js
 Our API is running on port 3000. If you wish to change it, you must change the "app.js" archive.
 
 
-Congratulations! You have our API running and many phrasal verbs to look for. Now, you can use it with your front-end or use the ours. 
+Congratulations!
+
+You have our API running and many phrasal verbs to look for. 
+
+Now, you can use it with [ours front-end](https://bitbucket.org/willian_batista/phrasal-verbs/downloads) or use yours.
