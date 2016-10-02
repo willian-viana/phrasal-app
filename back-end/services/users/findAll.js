@@ -2,7 +2,7 @@ var mongojs = require('mongojs');
 var db = mongojs('phrasalDB', ['users']);
 
 
-exports.find = function(options, fn){
+exports.find = function(fn){
     db.users.find({}, function(err, docs){
         if(err){
             if(typeof fn === "function") fn(err, 500);  

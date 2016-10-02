@@ -9,6 +9,9 @@ exports.init = function(router){
     /*  "/users"
     *    POST: Add a new user
     *    GET: Find all users 
+    *    GET: Find a single user by ID
+    *    PUT: Update user document
+    *    DELETE: Delete user by ID
     */
 
     // Add a new user
@@ -20,15 +23,8 @@ exports.init = function(router){
 
     // Find all users
     router.get('/users/', function(req, res){
-       userFindAll.find(req.param.id, callbackRoutes(req, res));
+       userFindAll.find(callbackRoutes(req, res));
     });
-
-
-    /*  "/users"
-    *    GET: Find a single user by ID
-    *    PUT: Update user document
-    *    DELETE: Delete user by ID
-    */
 
     //Find a single user by ID
     router.get('/users/:id', function(req, res){
@@ -39,7 +35,7 @@ exports.init = function(router){
     //Update user document
     router.put('/users/:id', function(req, res){
         updateById.update({
-            data : {name : req.body.name, email : req.body.email}
+            data : {id: req.params.id , name : req.body.name, email : req.body.email}
         }, callbackRoutes(req, res));
     });
 

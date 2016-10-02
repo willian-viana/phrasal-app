@@ -3,7 +3,6 @@ var db = mongojs('phrasalDB', ['users']);
 
 
 exports.delete = function(options, fn){
-    console.log(JSON.stringify(options));
     db.users.remove({
         _id: mongojs.ObjectId(options)
     }, true, function(err, doc){
