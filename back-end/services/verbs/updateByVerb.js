@@ -3,15 +3,13 @@ var db = mongojs('phrasalDB', ['phrasalCollection']);
 
 exports.update = function(options, fn){
 
-    console.log(options.data.verb + '' + options.data.suggestions);
-
     db.phrasalCollection.findAndModify({
          query: {
              verb : options.data.verb
         },
         update: { 
-            $set : {
-                suggestions: options.data.suggestions
+            $push : { 
+                suggestions : options.data.suggestion
             }
         },
         new : true  
@@ -24,3 +22,4 @@ exports.update = function(options, fn){
     });
 
 }
+

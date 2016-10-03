@@ -19,7 +19,7 @@ exports.init = function(router){
         updateByVerb.update({
             data : {
                 verb : req.body.verb, 
-                suggestions : req.body.suggestions
+                suggestion : req.body.suggestion
             }            
         }, callbackRoutes(req, res));
     });
