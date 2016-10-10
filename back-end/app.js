@@ -1,6 +1,7 @@
 var express = require('express');
 var app = express();
 var bodyParser = require('body-parser');
+var cors = require('cors');
 
 app.use(bodyParser.json()); 
 app.use(bodyParser.urlencoded({ extended: true })); 
@@ -9,6 +10,11 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // ROUTES FOR OUR API
 // ================== //
 var router = express.Router();     
+
+
+// CROSS DOMAIN
+// ================== //
+router.options('*', cors());
 
 
 // REQUIRES APIs
