@@ -30,7 +30,6 @@ app.controller('phrasalAppCtrl', ['$scope', '$http', '$timeout', '$q', '$log' , 
 // app.factory(['$scope', '$http', function DemoCtrl ($timeout, $q, $log) {
 
     var self = this;
-
     self.simulateQuery = false;
     self.isDisabled    = false;
 
@@ -82,44 +81,44 @@ app.controller('phrasalAppCtrl', ['$scope', '$http', '$timeout', '$q', '$log' , 
      * Build `states` list of key/value pairs
      */
     function loadAll(verb) {
-    //   var allStates = 'Alabama, Alaska, Arizona, Arkansas, California, Colorado, Connecticut, Delaware,\
-    //           Florida, Georgia, Hawaii, Idaho, Illinois, Indiana, Iowa, Kansas, Kentucky, Louisiana,\
-    //           Maine, Maryland, Massachusetts, Michigan, Minnesota, Mississippi, Missouri, Montana,\
-    //           Nebraska, Nevada, New Hampshire, New Jersey, New Mexico, New York, North Carolina,\
-    //           North Dakota, Ohio, Oklahoma, Oregon, Pennsylvania, Rhode Island, South Carolina,\
-    //           South Dakota, Tennessee, Texas, Utah, Vermont, Virginia, Washington, West Virginia,\
-    //           Wisconsin, Wyoming';
+      var allStates = 'Alabama, Alaska, Arizona, Arkansas, California, Colorado, Connecticut, Delaware,\
+              Florida, Georgia, Hawaii, Idaho, Illinois, Indiana, Iowa, Kansas, Kentucky, Louisiana,\
+              Maine, Maryland, Massachusetts, Michigan, Minnesota, Mississippi, Missouri, Montana,\
+              Nebraska, Nevada, New Hampshire, New Jersey, New Mexico, New York, North Carolina,\
+              North Dakota, Ohio, Oklahoma, Oregon, Pennsylvania, Rhode Island, South Carolina,\
+              South Dakota, Tennessee, Texas, Utah, Vermont, Virginia, Washington, West Virginia,\
+              Wisconsin, Wyoming';
 
-    //   return allStates.split(/, +/g).map( function (state) {
-    //     return {
-    //       value: state.toLowerCase(),
-    //       display: state
-    //     };
-    //   });
+      return allStates.split(/, +/g).map( function (state) {
+        return {
+          value: state.toLowerCase(),
+          display: state
+        };
+      });
 
 
-        $http({
-            method: 'GET',
-            url: 'http://localhost:3000/api/v1/verbs/' + verb
-        }).then(function successCallback(response) {
-            console.log(JSON.stringify(response.data + "successful"));
+        // $http({
+        //     method: 'GET',
+        //     url: 'http://localhost:3000/api/v1/verbs/' + verb
+        // }).then(function successCallback(response) {
+        //     console.log(JSON.stringify(response.data + "successful"));
             
-            return Object.keys(response.data).map( function (state) {
-                return {
-                value: state.toLowerCase(),
-                display: state
-                };
-            });
-            
-
-        }, function errorCallback(response) {
-            $scope.error = 'Erro: ' + response.statusText;
-            console.log(JSON.stringify(response.data) + "wrong");
-
-            return 0;
+        //     return Object.keys(response.data).map( function (state) {
+        //         return {
+        //             value: state,
+        //             display: state
+        //         };
+        //     });
             
 
-        });
+        // }, function errorCallback(response) {
+        //     $scope.error = 'Erro: ' + response.statusText;
+        //     console.log(JSON.stringify(response.data) + "wrong");
+
+        //     return 0;
+            
+
+        // });
 
     }
 
