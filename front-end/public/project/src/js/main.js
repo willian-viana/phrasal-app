@@ -9,7 +9,6 @@ app.controller('phrasalAppCtrl', ['$scope', '$http','$timeout', '$q', '$log',  f
     var self = this;
 
     self.simulateQuery = false;
-    self.isDisabled    = false;
 
     // list of `state` value/display objects
     self.states        = loadAll();
@@ -17,9 +16,9 @@ app.controller('phrasalAppCtrl', ['$scope', '$http','$timeout', '$q', '$log',  f
     self.selectedItemChange = selectedItemChange;
     self.searchTextChange   = searchTextChange;
 
-    self.newState = newState;
+    self.newVerb = newVerb;
 
-    function newState(state) {
+    function newVerb(state) {
       alert("Sorry! You'll need to create a Constitution for " + state + " first!");
     }
 
@@ -54,12 +53,13 @@ app.controller('phrasalAppCtrl', ['$scope', '$http','$timeout', '$q', '$log',  f
             method: 'GET',
             url: 'http://localhost:3000/api/v1/verbs/' + verb
         }).then(function successCallback(response) {
-            console.log(JSON.stringify(response.data + "successful"));
+            // console.log(JSON.stringify(response.data + "successful"));
             
-            return Object.keys(response.data).map( function (state) {
+            return response.data.map( function (state) {
+                console.log(JSON.stringify(state + "successful"));
                 return {
                     value: state,
-                    display: state
+                    display: state.verb
                 };
             });
             
@@ -68,22 +68,10 @@ app.controller('phrasalAppCtrl', ['$scope', '$http','$timeout', '$q', '$log',  f
             $scope.error = 'Erro: ' + response.statusText;
             console.log(JSON.stringify(response.data) + "wrong");
 
-            return 0;
+            return 'teste';
             
 
         });
-
-    }
-
-    /**
-     * Create filter function for a query string
-     */
-    function createFilterFor(query) {
-      var lowercaseQuery = angular.lowercase(query);
-
-      return function filterFn(state) {
-        return (state.value.indexOf(lowercaseQuery) === 0);
-      };
 
     }
 
