@@ -8,8 +8,6 @@ app.controller('phrasalAppCtrl', ['$scope', '$http','$timeout', '$q', '$log',  f
 
     var self = this;
 
-    self.simulateQuery = false;
-
     // list of `state` value/display objects
     self.states        = loadAll();
     self.querySearch   = querySearch;

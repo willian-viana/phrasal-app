@@ -73,7 +73,6 @@
                 <form ng-submit="$event.preventDefault()">
                     
                     <md-autocomplete 
-                        md-no-cache="ctrl.noCache" 
                         md-selected-item="ctrl.selectedItem" 
                         md-search-text-change="ctrl.searchTextChange(ctrl.searchText)" 
                         md-search-text="ctrl.searchText" 
@@ -91,8 +90,6 @@
                         </md-not-found>
                     </md-autocomplete>
                     <br>
-                    <md-checkbox ng-model="ctrl.simulateQuery">Simulate query for results?</md-checkbox>
-                    <md-checkbox ng-model="ctrl.noCache">Disable caching of queries?</md-checkbox>
 
                     <p>Your search didn't return a good answer? Tell me! contact@contact.com.br</p> 
                 </form>
