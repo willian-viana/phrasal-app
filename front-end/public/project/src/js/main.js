@@ -1,35 +1,13 @@
 var app = angular.module('phrasalapp', ['ngMaterial', 'ngMessages', 'material.svgAssetsCache']);
 
 
-app.controller('phrasalAppCtrl', ['$scope', '$http', '$timeout', '$q', '$log' , function($scope, $http, $timeout, $q, $log){
+app.controller('phrasalAppCtrl', ['$scope', '$http','$timeout', '$q', '$log',  function($scope, $http, $timeout, $q, $log){
     $scope.verb = '';
     $scope.description = {};
     $scope.error = '';
 
-    // $scope.searchVerb = function(verb){
-
-    //     $http({
-    //         method: 'GET',
-    //         url: 'http://localhost:3000/api/v1/verbs/' + verb
-    //     }).then(function successCallback(response) {
-            
-    //         $scope.description = response.data;
-    //         console.log(JSON.stringify(response.data + "successful"));
-
-    //     }, function errorCallback(response) {
-    //         $scope.error = 'Erro: ' + response.statusText;
-    //         console.log(JSON.stringify(response.data) + "wrong");
-            
-
-    //     });
-
-
-    // }
-
-
-// app.factory(['$scope', '$http', function DemoCtrl ($timeout, $q, $log) {
-
     var self = this;
+
     self.simulateQuery = false;
     self.isDisabled    = false;
 
@@ -39,11 +17,11 @@ app.controller('phrasalAppCtrl', ['$scope', '$http', '$timeout', '$q', '$log' , 
     self.selectedItemChange = selectedItemChange;
     self.searchTextChange   = searchTextChange;
 
-    // self.newState = newState;
+    self.newState = newState;
 
-    // function newState(state) {
-    //   alert("Sorry! You'll need to create a Constitution for " + state + " first!");
-    // }
+    function newState(state) {
+      alert("Sorry! You'll need to create a Constitution for " + state + " first!");
+    }
 
     // ******************************
     // Internal methods
@@ -54,71 +32,46 @@ app.controller('phrasalAppCtrl', ['$scope', '$http', '$timeout', '$q', '$log' , 
      * remote dataservice call.
      */
     function querySearch (query) {
-      var results = query ? self.states.filter( createFilterFor(query) ) : self.states,
-          deferred;
-      if (self.simulateQuery) {
-        deferred = $q.defer();
-        $timeout(function () { deferred.resolve( results ); }, Math.random() * 1000, false);
-        return deferred.promise;
-      } else {
-        return results;
-      }
+      return loadAll(query);
     }
 
     function searchTextChange(text) {
       $log.info('Text changed to ' + text);
-
+      //TODA VEZ QUE TROCAR O TEXTO
       self.states = loadAll(text);
-
     }
-
 
     function selectedItemChange(item) {
       $log.info('Item changed to ' + JSON.stringify(item));
     }
-
+    
     /**
      * Build `states` list of key/value pairs
      */
     function loadAll(verb) {
-      var allStates = 'Alabama, Alaska, Arizona, Arkansas, California, Colorado, Connecticut, Delaware,\
-              Florida, Georgia, Hawaii, Idaho, Illinois, Indiana, Iowa, Kansas, Kentucky, Louisiana,\
-              Maine, Maryland, Massachusetts, Michigan, Minnesota, Mississippi, Missouri, Montana,\
-              Nebraska, Nevada, New Hampshire, New Jersey, New Mexico, New York, North Carolina,\
-              North Dakota, Ohio, Oklahoma, Oregon, Pennsylvania, Rhode Island, South Carolina,\
-              South Dakota, Tennessee, Texas, Utah, Vermont, Virginia, Washington, West Virginia,\
-              Wisconsin, Wyoming';
-
-      return allStates.split(/, +/g).map( function (state) {
-        return {
-          value: state.toLowerCase(),
-          display: state
-        };
-      });
-
-
-        // $http({
-        //     method: 'GET',
-        //     url: 'http://localhost:3000/api/v1/verbs/' + verb
-        // }).then(function successCallback(response) {
-        //     console.log(JSON.stringify(response.data + "successful"));
+      
+       return $http({
+            method: 'GET',
+            url: 'http://localhost:3000/api/v1/verbs/' + verb
+        }).then(function successCallback(response) {
+            console.log(JSON.stringify(response.data + "successful"));
             
-        //     return Object.keys(response.data).map( function (state) {
-        //         return {
-        //             value: state,
-        //             display: state
-        //         };
-        //     });
+            return Object.keys(response.data).map( function (state) {
+                return {
+                    value: state,
+                    display: state
+                };
+            });
             
 
-        // }, function errorCallback(response) {
-        //     $scope.error = 'Erro: ' + response.statusText;
-        //     console.log(JSON.stringify(response.data) + "wrong");
+        }, function errorCallback(response) {
+            $scope.error = 'Erro: ' + response.statusText;
+            console.log(JSON.stringify(response.data) + "wrong");
 
-        //     return 0;
+            return 0;
             
 
-        // });
+        });
 
     }
 
@@ -135,3 +88,5 @@ app.controller('phrasalAppCtrl', ['$scope', '$http', '$timeout', '$q', '$log' , 
     }
 
 }]);
+
+
