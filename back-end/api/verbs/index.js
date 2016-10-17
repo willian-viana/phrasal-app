@@ -20,6 +20,10 @@ exports.init = function(router){
         verbFindAll.find(req.params.verb, callbackRoutes(req, res));  
     });
 
+    router.get('/verbs/', cors(), function(req, res){
+        verbFindAll.find('', callbackRoutes(req, res));  
+    });
+
     //Update phrasal verbs with suggestions
     router.put('/verbs/', function(req, res){
         updateByVerb.update({
