@@ -1,6 +1,6 @@
 <html >
 <head>
-    <title>Phrasal App - Your app for looking for</title>
+    <title>Phrasal App - Your app to looking for</title>
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
@@ -13,8 +13,6 @@
         [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
             display: none !important;
         }
-
-
     </style>
 </head>
 <body>
@@ -51,28 +49,15 @@
         </div><!--/.nav-collapse -->
       </div>
     </nav>
-    <!--<div ng-controller="phrasalAppCtrl">
-        <h2>  {{verb}} </h2>
-        <h3>{{description | json}}</h3>
-
-        <textarea clas="form-control" rows="3" ng-model="verb"></textarea>
-
-
-        <div class="form-group">
-            <button class="btn-primary btn" ng-click="searchVerb(verb)"> Pesquisar </button>
-        </div>
-
-        <span>{{error}}</span>
-    </div>-->
-
-
 
     <div class="container">
-        <div ng-controller="phrasalAppCtrl as ctrl" layout="column" ng-cloak="" class="autocompletedemoBasicUsage" ng-app="phrasalapp">
+        <div ng-controller="phrasalAppCtrl as ctrl" layout="column" ng-cloak ng-app="phrasalapp">
             <md-content class="md-padding">
                 <form ng-submit="$event.preventDefault()">
                     
-                    <md-autocomplete 
+                    <md-autocomplete
+                        ng-disabled="ctrl.isDisabled"
+                        md-no-cache="ctrl.noCache"
                         md-selected-item="ctrl.selectedItem" 
                         md-search-text-change="ctrl.searchTextChange(ctrl.searchText)" 
                         md-search-text="ctrl.searchText" 
@@ -90,6 +75,10 @@
                         </md-not-found>
                     </md-autocomplete>
                     <br>
+
+                    <md-checkbox ng-model="ctrl.simulateQuery">Simulate query for results?</md-checkbox>
+                    <md-checkbox ng-model="ctrl.noCache">Disable caching of queries?</md-checkbox>
+                    <md-checkbox ng-model="ctrl.isDisabled">Disable the input?</md-checkbox>
 
                     <p>Your search didn't return a good answer? Tell me! contact@contact.com.br</p> 
                 </form>
@@ -121,6 +110,7 @@
     <!-- Angular Material Javascript using GitCDN to load directly from `bower-material/master` -->
     <script src="https://gitcdn.link/repo/angular/bower-material/master/angular-material.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.1.4/ui-bootstrap.min.js" integrity="sha256-ECc1J3HgQvqDdftAaEbfbDSh8uinijOWHvCF4MfMgmM=" crossorigin="anonymous"></script>
+    
     <script src="./js/main.js"></script>
 
 </body>

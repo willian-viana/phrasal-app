@@ -2,30 +2,21 @@ var app = angular.module('phrasalapp', ['ngMaterial', 'ngMessages', 'material.sv
 
 
 app.controller('phrasalAppCtrl', ['$scope', '$http','$timeout', '$q', '$log',  function($scope, $http, $timeout, $q, $log){
-    $scope.verb = '';
-    $scope.description = {};
-    $scope.error = '';
 
     var self = this;
 
-    // list of `state` value/display objects
-    self.states        = loadAll();
+    // list of `verb` value/display objects
+    self.verbs        = loadAll();
     self.querySearch   = querySearch;
     self.selectedItemChange = selectedItemChange;
     self.searchTextChange   = searchTextChange;
-
-    self.newVerb = newVerb;
-
-    function newVerb(state) {
-      alert("Sorry! You'll need to create a Constitution for " + state + " first!");
-    }
 
     // ******************************
     // Internal methods
     // ******************************
 
     /**
-     * Search for states... use $timeout to simulate
+     * Search for verbs... use $timeout to simulate
      * remote dataservice call.
      */
     function querySearch (query) {
@@ -35,7 +26,7 @@ app.controller('phrasalAppCtrl', ['$scope', '$http','$timeout', '$q', '$log',  f
     function searchTextChange(text) {
       $log.info('Text changed to ' + text);
       //TODA VEZ QUE TROCAR O TEXTO
-      self.states = loadAll(text);
+      self.verbs = loadAll(text);
     }
 
     function selectedItemChange(item) {
@@ -43,7 +34,7 @@ app.controller('phrasalAppCtrl', ['$scope', '$http','$timeout', '$q', '$log',  f
     }
     
     /**
-     * Build `states` list of key/value pairs
+     * Build `verbs` list of key/value pairs
      */
     function loadAll(verb) {
       
@@ -53,11 +44,11 @@ app.controller('phrasalAppCtrl', ['$scope', '$http','$timeout', '$q', '$log',  f
         }).then(function successCallback(response) {
             // console.log(JSON.stringify(response.data + "successful"));
             
-            return response.data.map( function (state) {
-                console.log(JSON.stringify(state + "successful"));
+            return response.data.map( function (text) {
+                console.log(JSON.stringify(text + "successful"));
                 return {
-                    value: state,
-                    display: state.verb
+                    value: text,
+                    display: text.verb
                 };
             });
             
