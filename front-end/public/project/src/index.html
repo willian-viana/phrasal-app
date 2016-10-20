@@ -1,0 +1,118 @@
+<html >
+<head>
+    <title>Phrasal App - Your app to looking for</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/0.11.2/angular-material.min.css">
+    <link rel="stylesheet" href="./css/main.css">
+
+    <style>
+        [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+            display: none !important;
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Phrasal App</a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="#">Home</a></li>
+            <!--<li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="#">Action</a></li>
+                <li><a href="#">Another action</a></li>
+                <li><a href="#">Something else here</a></li>
+                <li role="separator" class="divider"></li>
+                <li class="dropdown-header">Nav header</li>
+                <li><a href="#">Separated link</a></li>
+                <li><a href="#">One more separated link</a></li>-->
+              </ul>
+            </li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+
+    <div class="container">
+        <div ng-controller="phrasalAppCtrl as ctrl" layout="column" ng-cloak ng-app="phrasalapp">
+            <md-content class="md-padding">
+                <form ng-submit="$event.preventDefault()">
+                    
+                    <md-autocomplete
+                        ng-disabled="ctrl.isDisabled"
+                        md-no-cache="ctrl.noCache"
+                        md-selected-item="ctrl.selectedItem" 
+                        md-search-text-change="ctrl.searchTextChange(ctrl.searchText)" 
+                        md-search-text="ctrl.searchText" 
+                        md-selected-item-change="ctrl.selectedItemChange(item)" 
+                        md-items="item in ctrl.querySearch(ctrl.searchText)" 
+                        md-item-text="item.display" 
+                        md-min-length="0" 
+                        placeholder="Enter a verb to looking for its phrasals verbs.">
+                        <md-item-template>
+                            <span md-highlight-text="ctrl.searchText" md-highlight-flags="^i">{{item.display}}</span>
+                        </md-item-template>
+                        <md-not-found>
+                            No phrasal verb matching "{{ctrl.searchText}}" were found.
+                            <a ng-click="ctrl.newState(ctrl.searchText)">Create a new one!</a>
+                        </md-not-found>
+                    </md-autocomplete>
+                    <br>
+
+                    <md-checkbox ng-model="ctrl.simulateQuery">Simulate query for results?</md-checkbox>
+                    <md-checkbox ng-model="ctrl.noCache">Disable caching of queries?</md-checkbox>
+                    <md-checkbox ng-model="ctrl.isDisabled">Disable the input?</md-checkbox>
+
+                    <p>Your search didn't return a good answer? Tell me! contact@contact.com.br</p> 
+                </form>
+            </md-content>
+        </div>
+    </div>
+
+
+    <!--Footer-->
+    <footer class="footer">
+      <div class="container">
+        <p class="text-muted">Place sticky footer content here.</p>
+      </div>
+    </footer>
+    <!--/.Footer-->
+
+
+
+
+
+
+    <!-- Angular Material Dependencies -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular-animate.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular-aria.js"></script>
+    <script src="https://code.angularjs.org/1.3.5/angular-messages.min.js"></script>
+
+    <script src="http://ngmaterial.assets.s3.amazonaws.com/svg-assets-cache.js"></script>
+    <!-- Angular Material Javascript using GitCDN to load directly from `bower-material/master` -->
+    <script src="https://gitcdn.link/repo/angular/bower-material/master/angular-material.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.1.4/ui-bootstrap.min.js" integrity="sha256-ECc1J3HgQvqDdftAaEbfbDSh8uinijOWHvCF4MfMgmM=" crossorigin="anonymous"></script>
+    
+    <script src="./js/main.js"></script>
+
+</body>
+
+</html>

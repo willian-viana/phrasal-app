@@ -5,6 +5,7 @@
   "main": "index.js",
   "dependencies": {
     "body-parser": "^1.15.2",
+    "cors": "^2.8.1",
     "crawler-js": "^2.0.1",
     "express": "^4.14.0",
     "js-crawler": "^0.3.11",

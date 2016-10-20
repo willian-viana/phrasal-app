@@ -1,8 +1,14 @@
 var verbFindAll = require('../../services/verbs/findAll.js');
 var updateByVerb = require('../../services/verbs/updateByVerb.js');
 
+var cors = require('cors');
+
 exports.init = function(router){
 
+
+    // CROSS DOMAIN
+    // ================== //
+    router.options('*', cors());
     
     /*  "/verbs"
     *    GET: Find all phrasal verbs that complete a phrasal verb with the param
@@ -10,8 +16,12 @@ exports.init = function(router){
     */
 
     // Find all verbs that complete a phrasal verb with the param
-    router.get('/verbs/:verb', function(req, res){
+    router.get('/verbs/:verb', cors(), function(req, res){
         verbFindAll.find(req.params.verb, callbackRoutes(req, res));  
+    });
+
+    router.get('/verbs/', cors(), function(req, res){
+        verbFindAll.find('', callbackRoutes(req, res));  
     });
 
     //Update phrasal verbs with suggestions
