@@ -1,0 +1,16 @@
+.vscode
+PhrasalApp-soapui-project.xml
+back-end/.vscode
+back-end/node_modules
+front-end/angular/release
+front-end/angular/debug
+front-end/angular/node_modules
+front-end/angular/temp
+front-end/angular/release.zip
+front-end/angular2.0/release
+front-end/angular2.0/debug
+front-end/angular2.0/node_modules
+front-end/angular2.0/temp
+front-end/angular2.0/release.zip
+PhrasalApp-soapui-project.xml
+back-end/.vscode
