@@ -2,6 +2,7 @@
 PhrasalApp-soapui-project.xml
 back-end/.vscode
 back-end/node_modules
+back-end/teste.js
 front-end/angular/release
 front-end/angular/debug
 front-end/angular/node_modules
