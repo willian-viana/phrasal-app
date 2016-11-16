@@ -30,7 +30,31 @@ app.controller('phrasalAppCtrl', ['$scope', '$http','$timeout', '$q', '$log',  f
     }
 
     function selectedItemChange(item) {
-      $log.info('Item changed to ' + JSON.stringify(item));
+      
+			var verb = item.value.verb;
+			
+			$http({
+            method: 'GET',
+            url: 'http://localhost:3000/api/v1/verbs/' + verb
+        }).then(function successCallback(response) {  
+						var suggestion = response.data[0].suggestions;
+
+            $scope.meaning = response.data[0].descriptions[0];
+            
+						if(!suggestion){
+							$scope.suggestion = "Ainda não há sugestões para esse phrasal verb, deseja ser o primeiro a sugerir uma tradução?"
+						} else{
+							$scope.suggestion = response.data[0].suggestions;
+						}
+
+				}, function errorCallback(response) {
+            $scope.error = 'Erro: ' + response.statusText;
+            console.log(JSON.stringify(response.data) + "wrong");
+
+            return 'teste';
+            
+
+        });
     }
     
     /**
@@ -42,10 +66,8 @@ app.controller('phrasalAppCtrl', ['$scope', '$http','$timeout', '$q', '$log',  f
             method: 'GET',
             url: 'http://localhost:3000/api/v1/verbs/' + verb
         }).then(function successCallback(response) {
-            // console.log(JSON.stringify(response.data + "successful"));
-            
+        
             return response.data.map( function (text) {
-                console.log(JSON.stringify(text + "successful"));
                 return {
                     value: text,
                     display: text.verb

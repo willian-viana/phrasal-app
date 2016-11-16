@@ -5,7 +5,7 @@ exports.find = function(options, fn){
 
     db.phrasalCollection.find({
         verb : { $regex: '^' + options + '.*', $options: 'i' } 
-    }, {verb : 1, suggestions : 1}, function(err, doc){
+    }, {verb : 1, suggestions : 1, descriptions: 1}, function(err, doc){
         if(err){
             if(typeof fn === "function") fn(err, 500);  
         }else if(doc){

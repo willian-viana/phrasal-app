@@ -1,5 +1,6 @@
-<html >
+<html>
 <head>
+		<meta charset="utf-8"/>
     <title>Phrasal App - Your app to looking for</title>
 
     <link rel="stylesheet" href="./css/style.css">
@@ -26,9 +27,9 @@
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
             <li class="active"><a href="#">Home</a></li>
-            <!--<li><a href="#about">About</a></li>
-            <li><a href="#contact">Contact</a></li>
-            <li class="dropdown">
+            <li><a href="#about">Sobre</a></li>
+            <li><a href="#contact">Contato</a></li>
+            <!--<li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
               <ul class="dropdown-menu">
                 <li><a href="#">Action</a></li>
@@ -69,15 +70,25 @@
                             <a ng-click="ctrl.newState(ctrl.searchText)">Create a new one!</a>
                         </md-not-found>
                     </md-autocomplete>
-                    <br>
-
-                    <md-checkbox ng-model="ctrl.simulateQuery">Simulate query for results?</md-checkbox>
-                    <md-checkbox ng-model="ctrl.noCache">Disable caching of queries?</md-checkbox>
-                    <md-checkbox ng-model="ctrl.isDisabled">Disable the input?</md-checkbox>
-
-                    <p>Your search didn't return a good answer? Tell me! contact@contact.com.br</p> 
+                    
+                     
                 </form>
+
+                <div id="meaning">
+                   {{meaning}}
+                </div>
+
+                <br/>
+
+                <div id="suggestion">                
+                	{{suggestion}}
+                </div>
+
+                <br>
+                <p>Your search didn't return a good answer? Tell me! contact@contact.com.br</p>
             </md-content>
+
+            
         </div>
     </div>
 
@@ -85,7 +96,7 @@
     <!--Footer-->
     <footer class="footer">
       <div class="container">
-        <p class="text-muted">Place sticky footer content here.</p>
+        <p class="text-muted">Phrasal App &copy; 2016. Todos os direitos reservados</p>
       </div>
     </footer>
     <!--/.Footer-->
