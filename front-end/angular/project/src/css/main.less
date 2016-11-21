@@ -8,6 +8,7 @@ html {
 body {
   /* Margin bottom by footer height */
   /*margin-bottom: 60px;*/
+  background-color: #ede7f6;
 }
 
 .footer {
@@ -16,7 +17,7 @@ body {
   width: 100%;
   /* Set the fixed height of the footer here */
   height: 60px;
-  background-color: #f5f5f5;
+  background-color: #7B1FA2;
 }
 
 
@@ -29,6 +30,7 @@ body > .container {
 }
 .container .text-muted {
   margin: 20px 0;
+  color: #fff;
 }
 
 .footer > .container {
@@ -46,14 +48,31 @@ code {
 
 
 .navbar-default{
-  background-image: linear-gradient(to bottom,#942db3 0,#b045b7 100%);
+  background-color: #7B1FA2;
+  background-image: none;
+
+  .navbar-brand{
+    color: #fff;
+  }
+
+  .navbar-nav{
+
+    > li{
+
+      > a{
+        color: #fff;
+      }
+    }
+    >.active{
+
+      > a{
+          color: #fff;
+          background-color: #b39ddb;
+          background-image: none;
+      }
+    }
+  }
 }
-
-.navbar-default .navbar-brand{
-  color: #fff;
-}
-
-
 
 .tooltipdemoBasicUsage md-toolbar .md-toolbar-tools .md-button,
 .tooltipdemoBasicUsage md-toolbar .md-toolbar-tools .md-button:hover {
@@ -64,16 +83,22 @@ code {
     
   }
 
-
   // Meaning Box
 
+  #meaning{
+    background: #2196F3;
+  }
+
+  #suggestion{
+    background: #009688;
+  }
   #meaning, #suggestion{
     font-size: 14px;
     box-sizing: border-box;
     border: none;
     box-shadow: none;
     outline: 0;
-    background: #fff;
+    color: #fff;
     width: 100%;
     padding: 0 15px;
     line-height: 40px;
