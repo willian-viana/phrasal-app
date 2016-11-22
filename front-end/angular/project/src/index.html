@@ -29,16 +29,6 @@
             <li class="active"><a href="#">Home</a></li>
             <li><a href="#about">Sobre</a></li>
             <li><a href="#contact">Contato</a></li>
-            <!--<li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
-              <ul class="dropdown-menu">
-                <li><a href="#">Action</a></li>
-                <li><a href="#">Another action</a></li>
-                <li><a href="#">Something else here</a></li>
-                <li role="separator" class="divider"></li>
-                <li class="dropdown-header">Nav header</li>
-                <li><a href="#">Separated link</a></li>
-                <li><a href="#">One more separated link</a></li>-->
               </ul>
             </li>
           </ul>
@@ -46,52 +36,56 @@
       </div>
     </nav>
 
-    <div class="container">
-        <div ng-controller="phrasalAppCtrl as ctrl" layout="column" ng-cloak ng-app="phrasalapp">
-            <md-content class="md-padding">
-                <form ng-submit="$event.preventDefault()">
-                    
-                    <md-autocomplete
-                        ng-disabled="ctrl.isDisabled"
-                        md-no-cache="ctrl.noCache"
-                        md-selected-item="ctrl.selectedItem" 
-                        md-search-text-change="ctrl.searchTextChange(ctrl.searchText)" 
-                        md-search-text="ctrl.searchText" 
-                        md-selected-item-change="ctrl.selectedItemChange(item)" 
-                        md-items="item in ctrl.querySearch(ctrl.searchText)" 
-                        md-item-text="item.display" 
-                        md-min-length="0" 
-                        placeholder="Enter a verb to looking for its phrasals verbs.">
-                        <md-item-template>
-                            <span md-highlight-text="ctrl.searchText" md-highlight-flags="^i">{{item.display}}</span>
-                        </md-item-template>
-                        <md-not-found>
-                            No phrasal verb matching "{{ctrl.searchText}}" were found.
-                            <a ng-click="ctrl.newState(ctrl.searchText)">Create a new one!</a>
-                        </md-not-found>
-                    </md-autocomplete>
-                    
-                     
-                </form>
+    <ng-view>
 
-                <div id="meaning">
-                   <p>{{meaning}}</p>
-                </div>
+      <div class="container">
+          <div ng-controller="phrasalAppCtrl as ctrl" layout="column" ng-cloak ng-app="phrasalapp">
+              <md-content class="md-padding">
+                  <form ng-submit="$event.preventDefault()">
+                      
+                      <md-autocomplete
+                          ng-disabled="ctrl.isDisabled"
+                          md-no-cache="ctrl.noCache"
+                          md-selected-item="ctrl.selectedItem" 
+                          md-search-text-change="ctrl.searchTextChange(ctrl.searchText)" 
+                          md-search-text="ctrl.searchText" 
+                          md-selected-item-change="ctrl.selectedItemChange(item)" 
+                          md-items="item in ctrl.querySearch(ctrl.searchText)" 
+                          md-item-text="item.display" 
+                          md-min-length="0" 
+                          placeholder="Enter a verb to looking for its phrasals verbs.">
+                          <md-item-template>
+                              <span md-highlight-text="ctrl.searchText" md-highlight-flags="^i">{{item.display}}</span>
+                          </md-item-template>
+                          <md-not-found>
+                              No phrasal verb matching "{{ctrl.searchText}}" were found.
+                              <a ng-click="ctrl.newState(ctrl.searchText)">Create a new one!</a>
+                          </md-not-found>
+                      </md-autocomplete>
+                      
+                      
+                  </form>
 
-                <br/>
+                  <div id="meaning">
+                    <p>{{meaning}}</p>
+                    <i class="fa fa-heart fa-2x" aria-hidden="true"></i>
+                  </div>
 
-                <div id="suggestion">                
-                	<p>{{suggestion}}</p>
-                </div>
+                  <br/>
 
-                <br>
-                <p>Sua pesquisa não retornou uma boa resposta? Entre em contato <a href="mailto:contact@contact.com.br">contact@contact.com.br</a></p>
-            </md-content>
+                  <div id="suggestion">                
+                    <p>{{suggestion}}</p>
+                    <i class="fa fa-smile-o fa-2x" aria-hidden="true"></i>
+                  </div>
 
-            
-        </div>
-    </div>
+                  <br>
+                  <p>Sua pesquisa não retornou uma boa resposta? Entre em contato <a href="mailto:contact@contact.com.br">contact@contact.com.br</a></p>
+              </md-content>
 
+              
+          </div>
+      </div>
+   </ng-view>
 
     <!--Footer-->
     <footer class="footer">
@@ -108,6 +102,7 @@
 
 
     <script src="./js/script.js"></script>
+    <script src="https://use.fontawesome.com/61adf1b93d.js"></script>
 
 </body>
 

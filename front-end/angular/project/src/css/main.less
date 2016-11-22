@@ -53,6 +53,10 @@ code {
 
   .navbar-brand{
     color: #fff;
+
+    &:hover{
+      color: #b39ddb
+    }
   }
 
   .navbar-nav{
@@ -61,6 +65,10 @@ code {
 
       > a{
         color: #fff;
+
+        &:hover{
+          color: #b39ddb;
+        }
       }
     }
     >.active{
@@ -87,12 +95,20 @@ code {
 
   #meaning{
     background: #2196F3;
+
   }
 
   #suggestion{
     background: #009688;
+
+    // .fa{
+    //   position: absolute;
+    //   right: 10px;
+    //   bottom: 10px;
+    // }
   }
   #meaning, #suggestion{
+    position: relative;
     font-size: 14px;
     box-sizing: border-box;
     border: none;
@@ -104,4 +120,21 @@ code {
     line-height: 40px;
     height: 100px;
     box-shadow: 0 1px 3px 0 rgba(0,0,0,.2),0 1px 1px 0 rgba(0,0,0,.14),0 2px 1px -1px rgba(0,0,0,.12);
+
+
+    .fa{
+      position: absolute;
+      right: 10px;
+      bottom: 10px;
+    }
+
+    p{
+      font-size: 18px;
+    }
+
   }
+
+
+md-autocomplete button{
+  z-index: 99;
+}

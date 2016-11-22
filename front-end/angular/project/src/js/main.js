@@ -1,5 +1,4 @@
-var app = angular.module('phrasalapp', ['ngMaterial', 'ngMessages', 'material.svgAssetsCache']);
-
+var app = angular.module('phrasalapp', ['ngRoute', 'ngMaterial', 'ngMessages', 'material.svgAssetsCache']);
 
 app.controller('phrasalAppCtrl', ['$scope', '$http','$timeout', '$q', '$log',  function($scope, $http, $timeout, $q, $log){
 
@@ -42,7 +41,7 @@ app.controller('phrasalAppCtrl', ['$scope', '$http','$timeout', '$q', '$log',  f
             $scope.meaning = response.data[0].descriptions[0];
             
 						if(!suggestion){
-							$scope.suggestion = "Ainda não há sugestões para esse phrasal verb, deseja ser o primeiro a sugerir uma tradução?"
+							$scope.suggestion = "Ainda não há sugestões para esse phrasal verb na sua língua, deseja ser o primeiro a sugerir uma tradução?"
 						} else{
 							$scope.suggestion = response.data[0].suggestions;
 						}
@@ -88,4 +87,17 @@ app.controller('phrasalAppCtrl', ['$scope', '$http','$timeout', '$q', '$log',  f
 
 }]);
 
+
+app.config(function($routeProvider) {
+    $routeProvider
+    .when("/", {
+        templateUrl : "../index.html"
+    })
+    .when("/#about", {
+        templateUrl : "../about.html"
+    })
+    .when("/#contact", {
+        templateUrl : "../contact.html"
+    });
+});
 
