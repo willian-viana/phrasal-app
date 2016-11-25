@@ -36,7 +36,7 @@
       </div>
     </nav>
 
-    <ng-view>
+    <!--<ng-view>-->
 
       <div class="container">
           <div ng-controller="phrasalAppCtrl as ctrl" layout="column" ng-cloak ng-app="phrasalapp">
@@ -58,8 +58,8 @@
                               <span md-highlight-text="ctrl.searchText" md-highlight-flags="^i">{{item.display}}</span>
                           </md-item-template>
                           <md-not-found>
-                              No phrasal verb matching "{{ctrl.searchText}}" were found.
-                              <a ng-click="ctrl.newState(ctrl.searchText)">Create a new one!</a>
+                              Nenhum phrasal verb "{{ctrl.searchText}}" foi encontrado.
+                              <!--<a ng-click="ctrl.newState(ctrl.searchText)">Create a new one!</a>-->
                           </md-not-found>
                       </md-autocomplete>
                       
@@ -73,19 +73,28 @@
 
                   <br/>
 
-                  <div id="suggestion">                
+                  <div id="suggestion">
+                    <ng-hide ng-hide="newSugHide">  
+                    <textarea id="newSuggestionText" placeholder="Digite sua sugestão aqui..." ng-model="ctrl.suggestionText">
+                    </textarea>
+                    <md-button class="md-raised md-primary" ng-click="addSuggestion(ctrl.searchText, ctrl.suggestionText)">Enviar</md-button>
+                    </ng-hide>
                     <p>{{suggestion}}</p>
+                    <p ng-if="suggestionIf">Deseja ser o primeiro a <a ng-click="newSuggestion(ctrl.searchText)">sugerir uma tradução?</a></p>
                     <i class="fa fa-smile-o fa-2x" aria-hidden="true"></i>
                   </div>
-
                   <br>
+                  <div ng-if="suggestionSent" class="alert alert-success" role="alert">
+                      Sugestão enviada com sucesso. Obrigado por ajudar o Phrasal App a ser melhor (;
+                  </div>
+
                   <p>Sua pesquisa não retornou uma boa resposta? Entre em contato <a href="mailto:contact@contact.com.br">contact@contact.com.br</a></p>
               </md-content>
 
               
           </div>
       </div>
-   </ng-view>
+   <!--</ng-view>-->
 
     <!--Footer-->
     <footer class="footer">

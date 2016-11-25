@@ -25,7 +25,7 @@ exports.init = function(router){
     });
 
     //Update phrasal verbs with suggestions
-    router.put('/verbs/', function(req, res){
+    router.put('/verbs/',cors(), function(req, res){
         updateByVerb.update({
             data : {
                 verb : req.body.verb, 

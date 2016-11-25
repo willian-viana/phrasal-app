@@ -20,6 +20,10 @@ body {
   background-color: #7B1FA2;
 }
 
+a{
+  cursor: pointer;
+}
+
 
 /* Custom page CSS
 -------------------------------------------------- */
@@ -98,7 +102,7 @@ code {
 
   }
 
-  #suggestion{
+  #suggestion, #newSuggestionText{
     background: #009688;
 
     // .fa{
@@ -121,6 +125,17 @@ code {
     height: 100px;
     box-shadow: 0 1px 3px 0 rgba(0,0,0,.2),0 1px 1px 0 rgba(0,0,0,.14),0 2px 1px -1px rgba(0,0,0,.12);
 
+    button{
+      position: absolute;
+      bottom: 4px;
+      left: 3px;
+      background-color: #004D40;
+
+      &:hover{
+        background-color: #E0F2F1;
+        color: #009688
+      }
+    }
 
     .fa{
       position: absolute;
@@ -129,11 +144,38 @@ code {
     }
 
     p{
-      font-size: 18px;
+      font-size: 16px;
+    }
+
+    a{
+      color :#3E2723;
+
+
+      &:hover{
+        text-decoration: none;
+      }
+    }
+
+    textarea#newSuggestionText {
+      position: relative;
+      font-size: 14px;
+      box-sizing: border-box;
+      border: none;
+      box-shadow: none;
+      outline: 0;
+      color: #fff;
+      width: 100%;
+      padding: 0;
+      line-height: 40px;
+      height: 100px;
     }
 
   }
 
+::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  color: #fff;
+  font-size: 16px;
+}
 
 md-autocomplete button{
   z-index: 99;

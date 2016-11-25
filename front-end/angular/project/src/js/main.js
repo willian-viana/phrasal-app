@@ -4,11 +4,16 @@ app.controller('phrasalAppCtrl', ['$scope', '$http','$timeout', '$q', '$log',  f
 
     var self = this;
 
+    $scope.suggestionSent = false;
+    $scope.suggestionIf = false;
+    $scope.newSugHide = true;
+
     // list of `verb` value/display objects
     self.verbs        = loadAll();
     self.querySearch   = querySearch;
     self.selectedItemChange = selectedItemChange;
     self.searchTextChange   = searchTextChange;
+
 
     // ******************************
     // Internal methods
@@ -17,7 +22,9 @@ app.controller('phrasalAppCtrl', ['$scope', '$http','$timeout', '$q', '$log',  f
     /**
      * Search for verbs... use $timeout to simulate
      * remote dataservice call.
+     *
      */
+
     function querySearch (query) {
       return loadAll(query);
     }
@@ -29,21 +36,23 @@ app.controller('phrasalAppCtrl', ['$scope', '$http','$timeout', '$q', '$log',  f
     }
 
     function selectedItemChange(item) {
-      
-			var verb = item.value.verb;
+            if(item)
+			    var verb = item.value.verb;
 			
 			$http({
             method: 'GET',
             url: 'http://localhost:3000/api/v1/verbs/' + verb
-        }).then(function successCallback(response) {  
-						var suggestion = response.data[0].suggestions;
-
-            $scope.meaning = response.data[0].descriptions[0];
+        }).then(function successCallback(response) {
+						var suggestion = !response.data[0].suggestions ? '' : response.data[0].suggestions;
+                        $scope.newSugHide = true;
+                        $scope.meaning = !response.data[0].descriptions ? '' : response.data[0].descriptions[0];
             
 						if(!suggestion){
-							$scope.suggestion = "Ainda não há sugestões para esse phrasal verb na sua língua, deseja ser o primeiro a sugerir uma tradução?"
+							$scope.suggestion = "Ainda não há sugestões para esse phrasal verb na sua língua"
+                            $scope.suggestionIf = true;
 						} else{
-							$scope.suggestion = response.data[0].suggestions;
+							$scope.suggestion = response.data[0].suggestions[0];
+                            $scope.suggestionIf = false;
 						}
 
 				}, function errorCallback(response) {
@@ -85,19 +94,50 @@ app.controller('phrasalAppCtrl', ['$scope', '$http','$timeout', '$q', '$log',  f
 
     }
 
+    $scope.newSuggestion = function (text){
+        console.log("TESTE " + text);
+        $scope.suggestion = '';
+        $scope.suggestionIf ='';
+        $scope.newSugHide = false;
+        
+    }
+
+    $scope.addSuggestion = function (verb, text){
+        return $http({
+            method: 'PUT',
+            url: 'http://localhost:3000/api/v1/verbs/',
+            data : {
+                verb: verb,
+                suggestion : text
+            }
+        }).then(function successCallback(response) {
+            $scope.suggestionSent = true;
+            console.log('Sugestao enviada com sucesso.')
+            return;
+            
+
+        }, function errorCallback(response) {
+            $scope.error = 'Erro: ' + response.statusText;
+            console.log(JSON.stringify(response.data) + "wrong");
+
+            return 'teste';
+
+        });
+        
+    }
 }]);
 
 
-app.config(function($routeProvider) {
-    $routeProvider
-    .when("/", {
-        templateUrl : "../index.html"
-    })
-    .when("/#about", {
-        templateUrl : "../about.html"
-    })
-    .when("/#contact", {
-        templateUrl : "../contact.html"
-    });
-});
+// app.config(function($routeProvider) {
+//     $routeProvider
+//     .when("/", {
+//         templateUrl : "../index.html"
+//     })
+//     .when("/#about", {
+//         templateUrl : "../about.html"
+//     })
+//     .when("/#contact", {
+//         templateUrl : "../contact.html"
+//     });
+// });
 
