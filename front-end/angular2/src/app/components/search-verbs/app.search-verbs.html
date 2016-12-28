@@ -1,17 +1,27 @@
 <div class="wrapper">
+    <div class="form-group">
+        <input class="form-control search-input" type="text" list="verbslist" placeholder="Digite seu verbo aqui" (change)="getVerbs()"/>
 
-    <input type="text" list="browsers" placeholder="Digite seu verbo aqui" (change)="getVerbs()"/>
+        <datalist id="verbslist">
+            <option *ngFor="let verb of verbs" value={{verb.verb}}>
+        </datalist>
 
-    <datalist id="browsers">
-        <!--<option value="Internet Explorer">
-        <option value="Firefox">
-        <option value="Google Chrome">
-        <option value="Opera">
-        <option value="Safari">-->
-    </datalist>
+        <div id="meaning">
+            <p class="ng-binding"></p>
+            <i class="fa fa-heart fa-2x" aria-hidden="true"></i>
+        </div>
+        <br/>
+        <div id="suggestion">
+            <!--<textarea id="newSuggestionText" placeholder="Digite sua sugestão aqui..." ng-model="ctrl.suggestionText" class="ng-pristine ng-untouched ng-valid ng-empty" aria-invalid="false"></textarea>
+            <button class="md-raised md-primary md-button md-ink-ripple" type="button" ng-transclude="" ng-click="addSuggestion(ctrl.searchText, ctrl.suggestionText)"><span class="ng-scope">Enviar</span></button>-->
 
-    <button (click)="getVerbs()">Clique aqui</button><br/>
+            <p class="ng-binding"></p>
+            <!-- ngIf: suggestionIf -->
+            <i class="fa fa-smile-o fa-2x" aria-hidden="true"></i>
+        </div>
 
-    DATA: {{getData}}
-
+        <br/>
+        
+        <p>Sua pesquisa não retornou uma boa resposta? Entre em contato <a href="mailto:contact@contact.com.br">contact@contact.com.br</a></p>
+    </div>
 </div>
