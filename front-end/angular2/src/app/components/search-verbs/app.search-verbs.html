@@ -1,0 +1,17 @@
+<div class="wrapper">
+
+    <input type="text" list="browsers" placeholder="Digite seu verbo aqui" (change)="getVerbs()"/>
+
+    <datalist id="browsers">
+        <!--<option value="Internet Explorer">
+        <option value="Firefox">
+        <option value="Google Chrome">
+        <option value="Opera">
+        <option value="Safari">-->
+    </datalist>
+
+    <button (click)="getVerbs()">Clique aqui</button><br/>
+
+    DATA: {{getData}}
+
+</div>

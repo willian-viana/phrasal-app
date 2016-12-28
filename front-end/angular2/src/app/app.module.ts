@@ -4,11 +4,16 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RouterModule, Routes } from '@angular/router';
 
+// Components
 import { AppComponent } from './components/app/app.component';
 import { Header } from './components/header/app.header';
 import { Footer } from './components/footer/app.footer';
 import { Contact } from './components/contact/app.contact';
 import { About } from './components/about/app.about';
+import { searchVerbs } from './components/search-verbs/app.search-verbs';
+
+// Services
+import { HttpService } from './services/get-verbs.service';
 
 
 const appRoutes: Routes = [
@@ -20,8 +25,8 @@ const appRoutes: Routes = [
     path: 'contact',
     component: Contact
   },
-  { path: '', component: About },
-  { path: '**', component: Contact }
+  { path: '', component: searchVerbs },
+  { path: '**', component: searchVerbs }
 ];
 
 
@@ -31,7 +36,8 @@ const appRoutes: Routes = [
     Header,
     Footer,
     Contact,
-    About
+    About,
+    searchVerbs
   ],
   imports: [
     BrowserModule,
@@ -39,7 +45,7 @@ const appRoutes: Routes = [
     HttpModule,
     RouterModule.forRoot(appRoutes)
   ],
-  providers: [],
+  providers: [HttpService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

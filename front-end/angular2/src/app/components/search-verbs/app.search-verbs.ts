@@ -1,27 +1,30 @@
 import { Component } from '@angular/core';
-import { Headers, Http } from '@angular/http';
-
-import 'rxjs/add/operator/toPromise';
-
+import { HttpService } from '../../services/get-verbs.service';
 
 @Component({
     selector: 'search-verb-app',
-    templateUrl: './app.search-verbs.html'
+    templateUrl: './app.search-verbs.html',
 })
 
 export class searchVerbs{
+    getData : string;
+    verbsBox : string;
+    
+    constructor(private _http : HttpService){}
 
-    constructor(private http: Http) { }
-
-    getVerbs(): Promise<string>{
-        return this.http.get('localhost:3000/api/v1/verbs/')
-                .toPromise()
-                .then(response => response.json().data as string)
-                .catch(this.handleError);
+    getVerbs(){
+        this._http.getVerbsHTTP()
+        .then(data => {
+            this.getData = data._body; 
+            console.log('XPTO 2', data)})
+        .catch(err => console.log(err))    
     }
 
-    private handleError(error: any): Promise<any> {
-        console.error('An error occurred', error);
-        return Promise.reject(error.message || error);
+    getVerbsID(text){
+        this._http.getVerbsByID(text)
+        .then(data => {
+            this.verbsBox = data;
+            console.log(data); 
+        })
     }
 }
